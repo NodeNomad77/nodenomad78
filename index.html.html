@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juntos para Sempre</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(180deg, #060012, #0e0125, #19002e);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Galeria de Fotos (Carrossel) */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            height: 600px; /* Ajuste a altura conforme necessário */
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img,
+        .carousel-images video {
+            width: 100%; /* Garante que as imagens ocupem toda a largura */
+            height: 100%; /* Força a altura das imagens e vídeos a ocupar o carrossel */
+            object-fit: cover; /* Mantém a proporção sem cortar */
+        }
+
+        /* Texto Personalizado */
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        /* Título "Juntos há" */
+        .counter-title {
+            font-size: 2em;
+            color: #b987f6;
+            margin: 20px 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Contador */
+        .counter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: transparent;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .counter div {
+            font-size: 1.5em;
+            margin: 5px 0;
+            color: #e1b7ff;
+            padding: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            background: rgba(185, 135, 246, 0.8); /* Fundo roxo claro */
+            border-radius: 8px; /* Bordas arredondadas */
+        }
+
+        /* Botões de Música */
+        .music-controls {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .music-control {
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* Corações caindo */
+        .heart {
+            position: fixed;
+            top: -50px;
+            color: red; /* Coração vermelho */
+            font-size: 24px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Espaço vazio no final */
+        .empty-space {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Galeria de Fotos (Carrossel) -->
+    <div class="carousel" id="carousel">
+        <div class="carousel-images" id="carouselImages">
+            <img src="01.jpeg" alt="Foto 1">
+            <img src="02.jpeg" alt="Foto 2">
+            <video autoplay muted loop>
+                <source src="11.mp4" type="video/mp4">
+            </video>
+            <img src="03.jpeg" alt="Foto 3">
+            <img src="04.jpeg" alt="Foto 4">
+            <video autoplay muted loop>
+                <source src="12.mp4" type="video/mp4">
+            </video>
+            <img src="05.jpeg" alt="Foto 5">
+            <img src="06.jpeg" alt="Foto 6">
+            <video autoplay muted loop>
+                <source src="13.mp4" type="video/mp4">
+            </video>
+            <img src="07.jpeg" alt="Foto 7">
+            <img src="08.jpeg" alt="Foto 8">
+            <img src="09.jpeg" alt="Foto 9">
+            <video autoplay muted loop>
+                <source src="14.mp4" type="video/mp4">
+            </video>
+            <img src="10.jpeg" alt="Foto 10">
+        </div>
+    </div>
+
+    <!-- Texto Personalizado -->
+    <div class="message">
+        <h2>Richard e Taynara</h2>
+        <p>Princesa, nesse tempo todo que passamos juntinhos, desde o começo eu sabia que tinha encontrado alguém especial. Mas, com o passar dos dias, percebi que havia encontrado o amor da minha vida. Desde então, me comprometi a fazer tudo o que estivesse ao meu alcance para te fazer feliz.</p>
+
+        <p>Sou muito feliz e grato por ter te conhecido. Juntando todos os detalhes de como nos encontramos, até mesmo aquele desenho de quando você tinha 10 anos, percebo que estávamos realmente destinados a ficar juntos. Cada momento que passamos me faz acreditar ainda mais nisso.</p>
+
+        <p>Muito obrigado por esses meses incríveis e por todos os que ainda virão. Espero poder te fazer feliz e cuidar de você da melhor maneira possível, oferecendo todo o amor que você merece. Saiba que eu te amo muito e sou completamente apaixonado por você. Meu maior desejo é que possamos construir a nossa vida juntos no futuro, repleta de alegrias e conquistas.</p>
+
+        <p>Observação: desculpa, não sou muito bom com as palavras, mas espero que você sinta toda a verdade que vem do meu coração. Te amo muito!</p>
+    </div>
+
+    <!-- Título "Juntos há" -->
+    <div class="counter-title">Juntos há</div>
+
+    <!-- Contador de Tempo -->
+    <div class="counter" id="counter">
+        <div><span id="years">0</span> anos</div>
+        <div><span id="days">0</span> dias</div>
+        <div><span id="hours">0</span> horas</div>
+        <div><span id="minutes">0</span> minutos</div>
+        <div><span id="seconds">0</span> segundos</div>
+    </div>
+</div>
+
+<!-- Espaço vazio para ver os corações no final da página -->
+<div class="empty-space"></div>
+
+<!-- Botões de Música -->
+<div class="music-controls">
+    <button class="music-control" onclick="previousTrack()">⏪</button>
+    <button class="music-control" onclick="toggleMusic()">🎶</button>
+    <button class="music-control" onclick="nextTrack()">⏩</button>
+</div>
+
+<audio id="backgroundMusic" loop>
+    <source id="musicSource" src="musica1.mp3" type="audio/mp3">
+    Seu navegador não suporta a reprodução de áudio.
+</audio>
+
+<script>
+    // Configurações de Música
+    const music = document.getElementById("backgroundMusic");
+    const tracks = [
+        "ed.mp3",
+        "poesia.mp3",
+        "john (1).mp3"
+    ];
+    let currentTrackIndex = 0;
+
+    music.volume = 0.2; // Ajuste o volume aqui
+
+    function loadTrack(index) {
+        music.src = tracks[index];
+        music.play();
+    }
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    }
+
+    function nextTrack() {
+        currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+        loadTrack(currentTrackIndex);
+    }
+
+    function previousTrack() {
+        currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+        loadTrack(currentTrackIndex);
+    }
+
+    // Função para Contador de Tempo
+    const startDate = new Date("2024-08-03T00:00:00");
+    function updateCounter() {
+        const now = new Date();
+        const elapsed = now - startDate;
+
+        const years = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 365));
+        const days = Math.floor((elapsed % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+        document.getElementById('years').textContent = years;
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+    setInterval(updateCounter, 1000);
+
+    // Função para Corações Caindo
+    function createFallingHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerText = "❤️"; // Coração vermelho
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+    setInterval(createFallingHeart, 500);
+
+    // Carrossel
+    const carouselImages = document.getElementById('carouselImages');
+    const totalImages = carouselImages.children.length;
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        carouselImages.style.transform = 'translateX(-' + currentIndex * 100 + '%)';
+    }
+
+    let carouselInterval = setInterval(updateCarousel, 3000);
+
+    // Toque para mudar as imagens
+    let startX = 0;
+    let endX = 0;
+
+    carouselImages.addEventListener('touchstart', function(event) {
+        startX = event.touches[0].clientX;
+    });
+
+    carouselImages.addEventListener('touchmove', function(event) {
+        endX = event.touches[0].clientX;
+    });
+
+    carouselImages.addEventListener('touchend', function() {
+        if (startX > endX + 50) {
+            clearInterval(carouselInterval);
+            currentIndex = (currentIndex + 1) % totalImages;
+            carouselImages.style.transform = 'translateX(-' + currentIndex * 100 + '%)';
+            carouselInterval = setInterval(updateCarousel, 3000);
+        } else if (startX + 50 < endX) {
+            clearInterval(carouselInterval);
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            carouselImages.style.transform = 'translateX(-' + currentIndex * 100 + '%)';
+            carouselInterval = setInterval(updateCarousel, 3000);
+        }
+    });
+
+    // Carregar a primeira faixa
+    loadTrack(currentTrackIndex);
+</script>
+
+</body>
+</html>

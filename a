@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juntos para Sempre</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Galeria de Fotos */
+        .gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Texto Personalizado */
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        /* Contador */
+        .counter {
+            display: flex;
+            justify-content: space-around;
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .counter div {
+            font-size: 1.5em;
+        }
+
+        /* Botão de Música */
+        .music-control {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Galeria de Fotos -->
+    <div class="gallery">
+        <img src="foto1.jpg" alt="Foto 1">
+        <img src="foto2.jpg" alt="Foto 2">
+        <img src="foto3.jpg" alt="Foto 3">
+        <!-- Adicione mais fotos conforme necessário -->
+    </div>
+
+    <!-- Texto Personalizado -->
+    <div class="message">
+        <h2>Nathan e Bruna</h2>
+        <p>Desde o primeiro momento em que te vi, algo mudou em mim. Em cada dia juntos, só aumenta esse sentimento.</p>
+    </div>
+
+    <!-- Contador de Tempo -->
+    <div class="counter" id="counter">
+        <div><span id="years">0</span> anos</div>
+        <div><span id="days">0</span> dias</div>
+        <div><span id="hours">0</span> horas</div>
+        <div><span id="minutes">0</span> minutos</div>
+        <div><span id="seconds">0</span> segundos</div>
+    </div>
+</div>
+
+<!-- Botão de Música -->
+<button class="music-control" onclick="toggleMusic()">🎶</button>
+
+<audio id="backgroundMusic" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta a reprodução de áudio.
+</audio>
+
+<script>
+    // Função para Contador de Tempo
+    const startDate = new Date("2023-01-01T00:00:00"); // Data de início do relacionamento
+    function updateCounter() {
+        const now = new Date();
+        const elapsed = now - startDate;
+
+        const years = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 365));
+        const days = Math.floor((elapsed % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+
+        document.getElementById('years').textContent = years;
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+    setInterval(updateCounter, 1000);
+
+    // Controle da Música
+    const music = document.getElementById("backgroundMusic");
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+        } else {
+            music.pause();
+        }
+    }
+</script>
+
+</body>
+</html>
